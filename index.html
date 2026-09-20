@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#12251d" />
+    <meta name="description" content="《候见》惊蛰 WebAR 物候观察原型" />
+    <title>候见 · 惊蛰 WebAR</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main id="app">
+      <section class="screen intro is-active" data-screen="intro" aria-labelledby="intro-title">
+        <div class="grain"></div>
+        <div class="intro-mark" aria-hidden="true">
+          <span>候</span><i></i><span>见</span>
+        </div>
+        <p class="eyebrow">二十四节气 WebAR 物候志 · 原型 01</p>
+        <h1 id="intro-title">惊蛰，不只在日历上。</h1>
+        <p class="lead">将镜头对准惊蛰卡，在一声春雷里，重新观察时间如何从万物中发生。</p>
+        <div class="intro-actions">
+          <button class="primary" id="start-ar">开始观候</button>
+          <button class="text-button" id="open-demo">没有卡片？体验演示模式</button>
+        </div>
+        <p class="privacy">摄像头画面只在本机处理，不上传、不保存。</p>
+      </section>
+
+      <section class="screen camera-screen" data-screen="camera" aria-label="惊蛰增强现实体验">
+        <video id="camera" autoplay muted playsinline></video>
+        <canvas id="analysis" hidden></canvas>
+        <canvas id="ar-canvas" aria-label="增强现实物候场景"></canvas>
+        <div class="camera-shade"></div>
+
+        <header class="camera-header">
+          <button class="icon-button" id="back-home" aria-label="返回首页">×</button>
+          <div>
+            <strong>惊蛰 · 三月初</strong>
+            <span id="tracking-state">正在寻找节气卡</span>
+          </div>
+          <button class="icon-button help-button" id="show-help" aria-label="扫描帮助">?</button>
+        </header>
+
+        <div class="scan-frame" id="scan-frame" aria-hidden="true">
+          <i></i><i></i><i></i><i></i>
+          <span>让卡片四角进入取景框</span>
+        </div>
+
+        <div class="story-caption" id="story-caption">
+          <small>惊蛰 · 初候</small>
+          <strong>天气渐暖，蛰伏于土中的生命开始苏醒。</strong>
+        </div>
+
+        <section class="interaction-panel" id="interaction-panel" aria-live="polite">
+          <div class="step-dots" aria-label="体验进度">
+            <i class="active"></i><i></i><i></i><i></i>
+          </div>
+          <p id="instruction">缓缓拖动日轮，让大地升温</p>
+          <label class="sun-control" id="sun-control">
+            <span aria-hidden="true">寒</span>
+            <input id="warmth" type="range" min="0" max="100" value="0" aria-label="大地温度" />
+            <span aria-hidden="true">暖</span>
+          </label>
+          <button class="primary thunder-button is-hidden" id="thunder">触碰云层，唤醒春雷</button>
+          <div class="phenology-buttons is-hidden" id="phenology-buttons">
+            <button data-phenology="桃始华"><b>一候</b>桃始华</button>
+            <button data-phenology="仓庚鸣"><b>二候</b>仓庚鸣</button>
+            <button data-phenology="鹰化为鸠"><b>三候</b>鹰化为鸠</button>
+          </div>
+          <button class="primary is-hidden" id="record-button">记录今日之候</button>
+        </section>
+
+        <div class="permission-error is-hidden" id="permission-error">
+          <h2>无法打开摄像头</h2>
+          <p>请在浏览器设置中允许摄像头权限，或先使用演示模式体验完整流程。</p>
+          <button class="primary" id="error-demo">进入演示模式</button>
+        </div>
+      </section>
+
+      <section class="screen record-screen" data-screen="record" aria-labelledby="record-title">
+        <button class="icon-button dark" id="record-back" aria-label="返回AR体验">←</button>
+        <p class="eyebrow">记录今日之候</p>
+        <h2 id="record-title">今天，你观察到了什么？</h2>
+        <p>没有标准答案。节气的意义，正发生在你的感受里。</p>
+        <div class="observation-grid" id="observation-grid">
+          <button data-value="花开了"><span>❀</span>花开了</button>
+          <button data-value="听见虫鸣"><span>⌁</span>听见虫鸣</button>
+          <button data-value="天气转暖"><span>☼</span>天气转暖</button>
+          <button data-value="出现春雷"><span>ϟ</span>出现春雷</button>
+          <button data-value="尚未发现明显变化"><span>○</span>尚未发现</button>
+        </div>
+        <label class="field">
+          <span>你所在的城市</span>
+          <input id="city" maxlength="20" placeholder="例如：杭州" autocomplete="address-level2" />
+        </label>
+        <button class="primary wide" id="make-card" disabled>生成我的惊蛰签</button>
+      </section>
+
+      <section class="screen result-screen" data-screen="result" aria-labelledby="result-title">
+        <div class="result-card" id="result-card">
+          <div class="result-orbit"></div>
+          <p class="vertical-title">惊蛰</p>
+          <div class="result-content">
+            <p id="result-date"></p>
+            <h2 id="result-title">我在惊蛰发现</h2>
+            <strong id="result-observation"></strong>
+            <p id="result-city"></p>
+            <blockquote>古人以万物确认时间，<br />我也留下了今天的一候。</blockquote>
+          </div>
+          <footer>候见 · 二十四节气 WebAR 物候志</footer>
+        </div>
+        <div class="result-actions">
+          <button class="primary" id="restart">再次观候</button>
+          <button class="secondary" id="save-card">保存节气签</button>
+        </div>
+        <p class="save-note" id="save-note">可截屏保存；桌面浏览器将尝试下载图片。</p>
+      </section>
+
+      <dialog id="help-dialog">
+        <button class="dialog-close" aria-label="关闭">×</button>
+        <h2>如何识别惊蛰卡</h2>
+        <ol>
+          <li>在明亮、无反光的环境使用。</li>
+          <li>让卡片四个彩色角标完整进入画面。</li>
+          <li>保持约30厘米距离，尽量正对卡片。</li>
+        </ol>
+        <a href="assets/jingzhe-card.svg" target="_blank" rel="noopener">打开可打印惊蛰卡</a>
+      </dialog>
+    </main>
+    <script type="module" src="app.js"></script>
+  </body>
+</html>

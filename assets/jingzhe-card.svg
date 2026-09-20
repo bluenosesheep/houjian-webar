@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="148mm" height="210mm" viewBox="0 0 1480 2100">
+  <defs>
+    <linearGradient id="paper" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f5f0df"/><stop offset="1" stop-color="#dce4cf"/></linearGradient>
+    <filter id="grain"><feTurbulence baseFrequency=".7" numOctaves="3" stitchTiles="stitch"/><feBlend in="SourceGraphic" mode="multiply"/></filter>
+    <pattern id="dots" width="36" height="36" patternUnits="userSpaceOnUse"><circle cx="3" cy="3" r="2" fill="#183126" opacity=".22"/></pattern>
+  </defs>
+  <rect width="1480" height="2100" rx="44" fill="url(#paper)"/>
+  <rect x="38" y="38" width="1404" height="2024" rx="28" fill="none" stroke="#142a20" stroke-width="8"/>
+  <rect x="70" y="70" width="1340" height="1960" rx="18" fill="url(#dots)" opacity=".35"/>
+
+  <!-- Four chromatic fiducials: cyan TL, magenta TR, green BL, yellow BR. -->
+  <g stroke="#0b1611" stroke-width="24">
+    <circle cx="150" cy="150" r="62" fill="#00b8d4"/>
+    <circle cx="1330" cy="150" r="62" fill="#d93c91"/>
+    <circle cx="150" cy="1950" r="62" fill="#35a853"/>
+    <circle cx="1330" cy="1950" r="62" fill="#f4c430"/>
+  </g>
+  <g fill="#f5f0df">
+    <circle cx="150" cy="150" r="18"/><rect x="1312" y="132" width="36" height="36" transform="rotate(45 1330 150)"/>
+    <path d="M150 1923l24 46h-48z"/><path d="M1330 1920l31 31-31 31-31-31z"/>
+  </g>
+
+  <text x="160" y="355" fill="#142a20" font-size="34" letter-spacing="16" font-family="sans-serif">二十四节气物候志 · 03</text>
+  <text x="1150" y="430" fill="#142a20" font-size="128" font-family="serif" writing-mode="tb" letter-spacing="32">惊蛰</text>
+  <text x="1044" y="438" fill="#a65d5c" font-size="30" font-family="serif" writing-mode="tb" letter-spacing="7">SPRING AWAKENS</text>
+
+  <g fill="none" stroke="#49634e" stroke-width="8" opacity=".86">
+    <path d="M180 1510C390 1370 330 1030 665 818C817 722 952 617 1045 455"/>
+    <path d="M454 1150c-112-180-171-280-149-458M606 874c-63-186-50-322 18-424M730 773c115-147 198-209 300-235"/>
+    <path d="M310 1367c-83 178-95 331-35 494M443 1245c69 188 173 321 314 414M523 1078c167 78 310 105 447 82"/>
+  </g>
+  <g fill="#d98e88" opacity=".92">
+    <circle cx="306" cy="694" r="42"/><circle cx="363" cy="761" r="35"/><circle cx="625" cy="449" r="43"/><circle cx="800" cy="665" r="38"/><circle cx="1015" cy="536" r="35"/>
+  </g>
+  <g fill="#b6c48c">
+    <ellipse cx="275" cy="1600" rx="30" ry="84" transform="rotate(-28 275 1600)"/><ellipse cx="438" cy="1417" rx="30" ry="88" transform="rotate(42 438 1417)"/>
+    <ellipse cx="801" cy="1610" rx="34" ry="94" transform="rotate(-54 801 1610)"/><ellipse cx="963" cy="1135" rx="31" ry="86" transform="rotate(58 963 1135)"/>
+  </g>
+
+  <circle cx="705" cy="1105" r="284" fill="none" stroke="#142a20" stroke-width="3" opacity=".3"/>
+  <circle cx="705" cy="1105" r="214" fill="none" stroke="#142a20" stroke-width="3" stroke-dasharray="7 17" opacity=".55"/>
+  <path d="M705 846v518M446 1105h518" stroke="#142a20" stroke-width="3" opacity=".25"/>
+  <circle cx="705" cy="1105" r="68" fill="#d8ae61" opacity=".82"/>
+  <path d="M728 974l-64 146h65l-55 120 135-170h-71l54-96z" fill="#f4efdc"/>
+
+  <g fill="#142a20" font-family="serif">
+    <text x="180" y="1778" font-size="42">一候 桃始华</text>
+    <text x="527" y="1778" font-size="42">二候 仓庚鸣</text>
+    <text x="874" y="1778" font-size="42">三候 鹰化为鸠</text>
+  </g>
+  <path d="M180 1810h1120" stroke="#142a20" stroke-width="3" opacity=".3"/>
+  <text x="180" y="1885" fill="#142a20" font-size="31" font-family="sans-serif" letter-spacing="5">让四角标记完整进入镜头 · 保持约30厘米距离</text>
+</svg>
